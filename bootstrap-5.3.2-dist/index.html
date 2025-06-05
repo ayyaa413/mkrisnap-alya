@@ -287,6 +287,29 @@
 
     <div id="surpriseMessage" class="message hidden" aria-live="polite" role="alert"></div>
 
+    <script>
+  function showMessage() {
+    const messageBox = document.getElementById('surpriseMessage');
+    const btn = document.querySelector('button');
+
+    const msg = "haii aku alya devika maharani kecintaan nya krisna ahahaha yakan? aku buat ini karna iseng aja sih, kamu harus janji sama aku harus sayang aku trus ya gaboleh marah' ya, walaupun gapernah sih eh jarang gitu";
+
+    messageBox.textContent = msg;
+    messageBox.classList.remove('hidden');
+    btn.setAttribute('aria-expanded', 'true');
+
+    // biar ada efek konfeti kalo kamu pakai library konfeti.js
+    if (typeof confetti === 'function') {
+      confetti({
+        particleCount: 150,
+        spread: 70,
+        origin: { y: 0.6 }
+      });
+    }
+  }
+</script>
+
+
     <!-- Video lucu ganti GIF -->
     <video id="videoSurprise" width="100%" controls autoplay loop muted style="margin-top: 20px; border-radius: 12px;">
       <source src="vidio/vid kita2.mp4" type="video/mp4" />
@@ -347,21 +370,24 @@
   <div class="card-container" aria-label="Foto kita berdua">
     <div class="card" aria-label="Foto aku">
       <img src="img/alya.jpg" alt="Foto Aku" />
+      <img src="img/ay7.jpg" alt="">
+      <img src="img/ay3.jpg" alt="">
       <div>Aku</div>
     </div>
     <div class="card" aria-label="Foto kamu">
       <img src="img/kris2.jpg" alt="Foto Kamu" />
+      <img src="img/kris.jpg" alt="">
+      <img src="img/kris4.jpg" alt="">
       <div>Kamu</div>
     </div>
   </div>
 
   <script>
     const surpriseMessages = [
-      "Aku sayang banget sama kamu 💕\nTerima kasih sudah jadi bagian hidup aku.",
-      "Kamu itu selalu bikin hari aku cerah ☀️\nAku pengen terus bersama kamu.",
-      "Jangan pernah lupa, aku selalu ada buat kamu 🥰\nKamu yang terbaik buat aku.",
-      "Makasih ya udah sabar dan selalu dukung aku 🫶\nKamu istimewa buat aku.",
-      "Aku nggak bisa berhenti senyum tiap inget kamu 😘\nSemoga kita selalu bahagia bersama."
+      "haii aku alya devika maharani  siapanya krisna ya ahaha aku buat ini karna iseng aja sih, kamu harus janji sama aku harus sayang aku trus ya gaboleh marah' ya, walaupun gapernah sih eh jarang gitu💕",
+      "Kamu itu selalu bikin hari aku cerah ☀️\nAku pengen terus sama kamu.🥰\nKamu yang terbaik buat aku.",
+      "Makasih ya udah sabar dan selalu dukung aku 🫶",
+      "Well😘\nSemoga kita selalu bahagia bersama."
     ];
 
     function showMessage() {
@@ -383,7 +409,7 @@
     const noteText = document.getElementById('noteText');
     const noteString = 
   "Krisna,\n" +
-  "Aku tahu kita nggak selalu sempurna. Tapi kamu adalah satu-satunya yang buat aku merasa lengkap.\n" +
+  "Aku tahu kita ngga selalu sempurna. Tapi kamu adalah satu-satunya yang buat aku merasa lengkap.\n" +
   "Saat dunia terasa berat dan aku ingin menyerah, kamu selalu jadi alasan aku tetap bertahan.\n" +
   "Terima kasih sudah sabar dan tetap di sini, walau aku kadang sulit dimengerti.\n" +
   "Aku nggak janji akan selalu sempurna, tapi aku janji akan selalu berusaha untuk kamu.\n" +
@@ -392,7 +418,7 @@
   "aku harap kamu tetep kuat. Jangan pernah lupa aku sayang banget sama kamu.  \n" +
   "Aku pengen kamu bahagia, walau aku nggak lagi nemenin.  \n\n" +
   "Jaga diri kamu ya, jangan lupa makan, dan tetep semangat ngejalanin hidup.  \n" +
-  "Kalau kamu kangen, inget aku di sini, selalu doain yang terbaik buat kamu💖  \n\n" +";"
+  "Kalau kamu kangen, inget aku di sini, selalu doain yang terbaik buat kamu💖  \n\n" + ""
 
     let index = 0;
     function typeWriter() {

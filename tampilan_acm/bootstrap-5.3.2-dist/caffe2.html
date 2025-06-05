@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Cari Caffe Yuk</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <style>
+    .fakeimg {
+      height: 200px;
+      background: #aaa;
+    }
+
+    .carousel-item img {
+   max-width: 100%;
+   height: auto;
+    }
+
+  </style>
+</head>
+<body>
+
+<div class="p-5 text-white text-center" style="background-color:gray;">
+  <h1>CAFETRACKER</h1>
+</div>
+
+<nav class="navbar navbar-expand-lg navbar-light" style="background-color: rgb(165, 164, 164); color: aliceblue;"> 
+  <div class="container-fluid">
+    <a class="navbar-brand text-white" href="#">CAFETRACKER</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav" style="margin-left: 13%;">
+      <ul class="navbar-nav mx-auto">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">Beranda</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Cafe Terdekat</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Review</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Tentang</a>
+        </li>
+      </ul>
+      <form class="d-flex ms-auto my-2 my-lg-0" role="search">
+        <input class="form-control me-2" type="search" placeholder="Cari kafe..." aria-label="Search">
+        <button class="btn btn-outline-light" type="submit">Cari</button>
+      </form>
+      <ul class="navbar-nav ms-2">
+        <li class="nav-item">
+          <button class="btn btn-dark" type="submit">Login</button>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="container-fluid"></div>
+  <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner" style="margin-top: 3%; margin-top: 0%;">
+      <div class="carousel-item active">
+        <img src="https://awsimages.detik.net.id/community/media/visual/2023/11/13/third-space-tempat-nongkrong-baru-di-kota-bandung-1_169.jpeg?w=1200" class="d-block w-80" alt="Banner 1" style="width: 1290px; height: 500px; margin-top: 2%; margin-left: 1%;">
+      </div>
+    </div>
+  </div>
+<div class="container mt-5">
+  <h2 class="mb-4 text-center">Rekomendasi Tempat Cafe Terbaik</h2>
+  <div class="row">
+    <div class="col-lg-4 col-md-6 mb-4">
+      <div class="card">
+        <img src="https://i.pinimg.com/564x/45/0a/0b/450a0bfdacbc74e556e99d1544d1014b.jpg" class="card-img-top" alt="Cafe Harmoni">
+        <div class="card-body">
+          <h5 class="card-title">VSC Rekomendasi</h5>
+          <p class="card-text">Cafe dengan suasana yang tenang dan nyaman, cocok untuk bekerja atau bersantai bersama teman.</p>
+          <p class="card-text"><small class="text-muted">Jl. Harmoni No.10, Jakarta</small></p>
+          <a href="#" class="btn btn-primary">Lihat Detail</a>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-4 col-md-6 mb-4">
+      <div class="card">
+        <img src="https://i.pinimg.com/564x/da/79/b8/da79b8c12ae673e05372608169768e59.jpg" class="card-img-top" alt="Cafe Aroma">
+        <div class="card-body">
+          <h5 class="card-title">Cafe Aroma</h5>
+          <p class="card-text">Menawarkan kopi spesial yang diseduh dengan biji kopi pilihan dari berbagai daerah di Indonesia.</p>
+          <p class="card-text"><small class="text-muted">Jl. Sudirman No.15, Bandung</small></p>
+          <a href="#" class="btn btn-primary">Lihat Detail</a>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-4 col-md-6 mb-4">
+      <div class="card">
+        <img src="https://i.pinimg.com/736x/e0/6b/4f/e06b4ffc346f4b3aca1d4df9eba0e20c.jpg" class="card-img-top" alt="Cafe Nostalgia">
+        <div class="card-body">
+          <h5 class="card-title">Cafe Nostalgia</h5>
+          <p class="card-text">Tempat yang sempurna untuk menikmati suasana klasik dan menu kopi tradisional.</p>
+          <p class="card-text"><small class="text-muted">Jl. Merdeka No.8, Surabaya</small></p>
+          <a href="#" class="btn btn-primary">Lihat Detail</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Testimoni Pengunjung -->
+<div class="container mt-5">
+  <h2 class="mb-4 text-center">Apa Kata Mereka Tentang Kami?</h2>
+  <div class="row">
+    <div class="col-lg-4 mb-4">
+      <div class="card">
+        <div class="card-body">
+          <blockquote class="blockquote mb-0">
+            <p>Tempat yang nyaman dan kopinya enak! Saya sangat menikmati waktu saya di Cafe Aroma.</p>
+            <footer class="blockquote-footer">Jane Smith di <cite title="Cafe Aroma">Cafe Aroma</cite></footer>
+          </blockquote>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-4 mb-4">
+      <div class="card">
+        <div class="card-body">
+          <blockquote class="blockquote mb-0">
+            <p>Cafe Nostalgia memiliki suasana klasik yang membuat saya merasa seperti kembali ke masa lalu.</p>
+            <footer class="blockquote-footer">Michael Lee di <cite title="Cafe Nostalgia">Cafe Nostalgia</cite></footer>
+          </blockquote>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-4 mb-4">
+      <div class="card">
+        <div class="card-body">
+          <blockquote class="blockquote mb-0">
+            <p>Rekomendasi terbaik untuk bekerja sambil menikmati secangkir kopi, suasana di Cafe Harmoni sangat tenang.</p>
+            <footer class="blockquote-footer">John Doe di <cite title="Cafe Harmoni">Cafe Harmoni</cite></footer>
+          </blockquote>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Tips and Artikel -->
+<div class="container mt-5">
+  <h2 class="mb-4 text-center">Artikel & Tips Terbaru</h2>
+  <div class="row">
+    <div class="col-lg-6 mb-4">
+      <div class="card">
+        <img src="https://i.pinimg.com/564x/6d/12/8b/6d128bcd76b90b23deca46244d8cf83e.jpg" class="card-img-top" alt="Tips Minum Kopi">
+        <div class="card-body">
+          <h5 class="card-title">Tips Menikmati Kopi</h5>
+          <p class="card-text">Pelajari cara terbaik untuk menikmati kopi spesialmu, mulai dari jenis biji hingga metode penyeduhan.</p>
+          <a href="#" class="btn btn-primary">Baca Selengkapnya</a>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-6 mb-4">
+      <div class="card">
+        <img src="https://i.pinimg.com/564x/2b/f2/5b/2bf25bc9d00e702e979b4f0aaf63b1d9.jpg" class="card-img-top" alt="Artikel Cafe Terdekat">
+        <div class="card-body">
+          <h5 class="card-title">Cafe Terdekat yang Wajib Dikunjungi</h5>
+          <p class="card-text">Berikut daftar cafe terdekat dengan pemandangan yang indah dan suasana yang nyaman.</p>
+          <a href="#" class="btn btn-primary">Baca Selengkapnya</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Sosial Media Section -->
+<div class="container mt-5">
+  <h2 class="mb-4 text-center">Temukan Kami di Sosial Media</h2>
+  <div class="row text-center">
+    <div class="col">
+      <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/174/174855.png" alt="Instagram" style="width: 50px;"></a>
+    </div>
+    <div class="col">
+      <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/174/174848.png" alt="Facebook" style="width: 50px;"></a>
+    </div>
+    <div class="col">
+      <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/733/733579.png" alt="Twitter" style="width: 50px;"></a>
+    </div>
+  </div>
+</div>
+
+<!-- Map Lokasi -->
+<div class="container mt-5">
+  <h2 class="mb-4 text-center">Temukan Cafe Terdekat</h2>
+  <div class="embed-responsive embed-responsive-16by9">
+    <iframe class="embed-responsive-item" src="https://maps.google.com/maps?q=jakarta&output=embed" style="width:100%; height:400px;" frameborder="0"></iframe>
+  </div>
+</div>
+
+<div class="container mt-5 mb-5">
+  <div class="row justify-content-center">
+    <div class="col-lg-6">
+      <h2 class="text-center mb-4">Berlangganan Newsletter Kami</h2>
+      <form>
+        <div class="mb-3">
+          <label for="email" class="form-label">Alamat Email</label>
+          <input type="email" class="form-control" id="email" placeholder="Masukkan email Anda">
+        </div>
+        <button type="submit" class="btn btn-primary w-100">Berlangganan</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+
+</body>
+</html>
