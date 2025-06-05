@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Surprise Buat Kamu! 💖</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+  <style>
+    body {
+      font-family: 'Comic Sans MS', cursive;
+      background-color: #ffe6f0;
+      background-image: url('https://images.unsplash.com/photo-1504198458649-3128b932f49b?auto=format&fit=crop&w=1470&q=80');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      color: #ff3399;
+      padding: 50px 20px;
+      overflow-x: hidden;
+    }
+
+    .overlay {
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 20px;
+      padding: 30px;
+      max-width: 500px;
+      margin: auto;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      text-align: center;
+      position: relative;
+      z-index: 2;
+    }
+
+    h1, h3 {
+      font-size: 2.5rem;
+      color: #ff1493;
+    }
+
+    p {
+      font-size: 1.2rem;
+      margin: 20px 0;
+    }
+
+    .heart {
+      font-size: 3rem;
+      animation: beat 1s infinite;
+      user-select: none;
+    }
+
+    @keyframes beat {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.2); }
+    }
+
+    button {
+      background: #ff66a3;
+      border: none;
+      padding: 10px 20px;
+      font-size: 1rem;
+      color: white;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      user-select: none;
+    }
+
+    button:hover {
+      background: #ff3385;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .message {
+      margin-top: 20px;
+      font-size: 1.3rem;
+      color: #c71585;
+      min-height: 60px;
+      white-space: pre-line;
+    }
+
+    img.photo {
+      width: 100%;
+      border-radius: 15px;
+      margin-top: 15px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+      user-select: none;
+    }
+
+    /* Galeri Foto Kenangan */
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 15px;
+      margin-top: 15px;
+    }
+
+    .gallery div {
+      text-align: center;
+    }
+
+    .gallery img {
+      width: 100%;
+      height: auto;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      object-fit: contain;
+      user-select: none;
+    }
+
+    .gallery img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 6px 14px rgba(0,0,0,0.25);
+    }
+
+    .gallery small {
+      display: block;
+      margin-top: 6px;
+      color: #c71585;
+      font-weight: 600;
+      user-select: none;
+    }
+
+    /* Floating love hearts */
+    .love-floating {
+      position: fixed;
+      bottom: -10px;
+      font-size: 24px;
+      animation: floatUp 5s linear infinite;
+      pointer-events: none;
+      opacity: 0.7;
+      user-select: none;
+      z-index: 1000;
+    }
+
+    @keyframes floatUp {
+      0% { transform: translateY(0); opacity: 1; }
+      100% { transform: translateY(-100vh); opacity: 0; }
+    }
+
+    /* Floating photos */
+    .float-img {
+      position: absolute;
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      object-fit: cover;
+      animation: float 6s infinite ease-in-out;
+      z-index: 1;
+      user-select: none;
+    }
+
+    .float1 { top: 10px; left: 10px; animation-delay: 0s; }
+    .float2 { top: 20px; right: 20px; animation-delay: 2s; }
+    .float3 { bottom: 10px; left: 30px; animation-delay: 4s; }
+    .float4 { bottom: 20px; right: 30px; animation-delay: 1s; }
+
+    @keyframes float {
+      0%   { transform: translateY(0px) rotate(0deg); }
+      50%  { transform: translateY(-15px) rotate(3deg); }
+      100% { transform: translateY(0px) rotate(0deg); }
+    }
+
+    /* Catatan tulisan ketik */
+    #noteContainer {
+      margin-top: 40px;
+      background: #ffe6f0;
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 4px 15px rgba(255, 20, 147, 0.2);
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
+      color: #c71585;
+      font-style: italic;
+      font-size: 1.1rem;
+      line-height: 1.5;
+      position: relative;
+      overflow: hidden;
+      min-height: 130px;
+      user-select: text;
+    }
+
+    #noteContainer h4 {
+      text-align: center;
+      margin-bottom: 15px;
+      font-weight: 700;
+      user-select: none;
+    }
+
+    #cursor {
+      position: absolute;
+      right: 30px;
+      bottom: 20px;
+      width: 3px;
+      height: 24px;
+      background-color: #c71585;
+      animation: blink 1s steps(2, start) infinite;
+      border-radius: 2px;
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
+    }
+
+    /* Card container untuk foto */
+    .card-container {
+      max-width: 500px;
+      margin: 30px auto;
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+    }
+
+    .card-container .card {
+      flex: 1;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(199, 21, 133, 0.2);
+      overflow: hidden;
+      background: #ffe6f0;
+      text-align: center;
+      user-select: none;
+    }
+
+    .card-container .card img {
+      width: 100%;
+      border-radius: 12px 12px 0 0;
+      object-fit: cover;
+      height: 200px;
+    }
+
+    .card-container .card div {
+      padding: 10px;
+      color: #c71585;
+      font-weight: 700;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Musik background -->
+  <audio id="bgMusic" src="https://www.bensound.com/bensound-music/bensound-sunny.mp3" autoplay loop></audio>
+
+  <!-- Floating hearts animation -->
+  <script>
+    setInterval(() => {
+      const heart = document.createElement('div');
+      heart.className = 'love-floating';
+      heart.style.left = `${Math.random() * 100}vw`;
+      heart.textContent = '💗';
+      document.body.appendChild(heart);
+      setTimeout(() => heart.remove(), 5000);
+    }, 500);
+  </script>
+
+  <!-- Floating emojis -->
+  <img src="https://emojicdn.elk.sh/🥰" style="width:60px; position:absolute; top:80px; right:30px; transform: rotate(-20deg);" alt="Emoji senyum cinta" />
+  <img src="https://emojicdn.elk.sh/🤪" style="width:60px; position:absolute; bottom:60px; left:40px; transform: rotate(10deg);" alt="Emoji lucu" />
+
+ <!-- Floating photos tambahan + love -->
+<img src="img/oy.jpg" class="float-img float1" alt="Foto pinggir 1" />
+<img src="img/ayya.jpg" class="float-img float2" alt="Foto pinggir 2" />
+<img src="img/ya.jpg" class="float-img float3" alt="Foto pinggir 3" />
+<img src="img/alya.jpg" class="float-img float4" alt="Foto pinggir 4" />
+<img src="img/kris2.jpg" class="float-img float1" style="top: 100px; left: 60px;" alt="Foto tambahan 1" />
+<img src="img/kris.jpg" class="float-img float2" style="top: 150px; right: 60px;" alt="Foto tambahan 2" />
+<img src="img/kris3.jpg" class="float-img float3" style="bottom: 80px; left: 90px;" alt="Foto tambahan 3" />
+<img src="img/ss4.jpg" class="float-img float4" style="bottom: 100px; right: 80px;" alt="Foto tambahan 4" />
+<!-- Floating love emoji -->
+<div class="love-floating" style="left: 20px; animation-delay: 1s;">❤️</div>
+<div class="love-floating" style="left: 50vw; animation-delay: 2s;">💖</div>
+<div class="love-floating" style="left: 80vw; animation-delay: 3s;">💕</div>
+
+
+  <div class="overlay" role="main" aria-label="Surprise message container">
+    <h3>Hai <br>MUHAMMAD KRISNA PRAMUJA</h3>
+    <p>Aku punya sesuatu buat kamuuu...</p>
+    <div class="heart" aria-hidden="true">💓</div>
+
+    <img src="img/ya.jpg" alt="Foto kamu" class="photo" />
+
+    <button type="button" onclick="showMessage()" aria-controls="surpriseMessage" aria-expanded="false">Klik Aku!</button>
+
+    <div id="surpriseMessage" class="message hidden" aria-live="polite" role="alert"></div>
+
+    <!-- Video lucu ganti GIF -->
+    <video id="videoSurprise" width="100%" controls autoplay loop muted style="margin-top: 20px; border-radius: 12px;">
+      <source src="vidio/vid kita2.mp4" type="video/mp4" />
+      Maaf, browser kamu tidak mendukung video.
+    </video>
+  </div>
+
+  <div class="gallery" aria-label="Galeri Foto Kenangan">
+    <div class="card" style="border-radius:12px; overflow:hidden;">
+      <img src="img/awal1.jpg" class="card-img-top" alt="Awal Chat Kita" title="Awal-awal kamu mulai jatuh cinta~" />
+      <div class="card-body" style="padding: 10px; background:#ffe6f0;">
+        <small>Awal Kita Kenal 💬</small>
+      </div>
+    </div>
+
+    <div class="card" style="border-radius:12px; overflow:hidden;">
+      <img src="img/pindah ig.jpg" class="card-img-top" alt="Momen Lucu" title="Waktu kita ketawa bareng sampai perut sakit 🤭" />
+      <div class="card-body" style="padding: 10px; background:#ffe6f0;">
+        <small>Password nya apaa😆</small>
+      </div>
+    </div>
+
+    <div class="card" style="border-radius:12px; overflow:hidden;">
+      <img src="img/ssch1.jpg" class="card-img-top" alt="Nonton Bareng" title="Filmnya lupa, tapi pelukannya ingat 😜" />
+      <div class="card-body" style="padding: 10px; background:#ffe6f0;">
+        <small>Berantim dikit biar seru</small>
+      </div>
+    </div>
+
+    <div class="card" style="border-radius:12px; overflow:hidden;">
+      <img src="img/ss2.jpg" class="card-img-top" alt="Jalan Bareng" title="Mau kemana pun asal sama kamu 💕" />
+      <div class="card-body" style="padding: 10px; background:#ffe6f0;">
+        <small>Si paling Kepencet call 🚶</small>
+      </div>
+    </div>
+
+    <div class="card" style="border-radius:12px; overflow:hidden;">
+      <img src="img/ss3.jpg" class="card-img-top" alt="Ngambek Lucu" title="Ngambek manja tapi tetep sayang 💋" />
+      <div class="card-body" style="padding: 10px; background:#ffe6f0;">
+        <small>Kirim trus kirim 😤</small>
+      </div>
+    </div>
+
+    <div class="card" style="border-radius:12px; overflow:hidden;">
+      <img src="img/ss4.jpg" class="card-img-top" alt="Selfie Gokil" title="Selfie kita yang paling nyentrik! 🤪" />
+      <div class="card-body" style="padding: 10px; background:#ffe6f0;">
+        <small>Virtual dulu kita📷</small>
+      </div>
+    </div>
+  </div>
+
+  <div id="noteContainer" aria-label="Catatan untuk kamu">
+    <h4>Catatan Untuk Kamu 💌</h4>
+    <p id="noteText" aria-live="polite" aria-atomic="true" style="white-space: pre-wrap;"></p>
+    <div id="cursor"></div>
+  </div>
+
+  <div class="card-container" aria-label="Foto kita berdua">
+    <div class="card" aria-label="Foto aku">
+      <img src="img/alya.jpg" alt="Foto Aku" />
+      <div>Aku</div>
+    </div>
+    <div class="card" aria-label="Foto kamu">
+      <img src="img/kris2.jpg" alt="Foto Kamu" />
+      <div>Kamu</div>
+    </div>
+  </div>
+
+  <script>
+    const surpriseMessages = [
+      "Aku sayang banget sama kamu 💕\nTerima kasih sudah jadi bagian hidup aku.",
+      "Kamu itu selalu bikin hari aku cerah ☀️\nAku pengen terus bersama kamu.",
+      "Jangan pernah lupa, aku selalu ada buat kamu 🥰\nKamu yang terbaik buat aku.",
+      "Makasih ya udah sabar dan selalu dukung aku 🫶\nKamu istimewa buat aku.",
+      "Aku nggak bisa berhenti senyum tiap inget kamu 😘\nSemoga kita selalu bahagia bersama."
+    ];
+
+    function showMessage() {
+      const messageBox = document.getElementById('surpriseMessage');
+      const msg = surpriseMessages[Math.floor(Math.random() * surpriseMessages.length)];
+      messageBox.textContent = msg;
+      messageBox.classList.remove('hidden');
+      const btn = document.querySelector('button');
+      btn.setAttribute('aria-expanded', 'true');
+
+      confetti({
+        particleCount: 150,
+        spread: 70,
+        origin: { y: 0.6 }
+      });
+      
+    }
+
+    const noteText = document.getElementById('noteText');
+    const noteString = 
+  "Krisna,\n" +
+  "Aku tahu kita nggak selalu sempurna. Tapi kamu adalah satu-satunya yang buat aku merasa lengkap.\n" +
+  "Saat dunia terasa berat dan aku ingin menyerah, kamu selalu jadi alasan aku tetap bertahan.\n" +
+  "Terima kasih sudah sabar dan tetap di sini, walau aku kadang sulit dimengerti.\n" +
+  "Aku nggak janji akan selalu sempurna, tapi aku janji akan selalu berusaha untuk kamu.\n" +
+  "Kalau suatu saat kamu menangis, biar itu jadi air mata bahagia karena kita bertumbuh bersama.\n" +
+  "Kalau suatu saat nanti aku nggak ada lagi di samping kamu,  \n" +
+  "aku harap kamu tetep kuat. Jangan pernah lupa aku sayang banget sama kamu.  \n" +
+  "Aku pengen kamu bahagia, walau aku nggak lagi nemenin.  \n\n" +
+  "Jaga diri kamu ya, jangan lupa makan, dan tetep semangat ngejalanin hidup.  \n" +
+  "Kalau kamu kangen, inget aku di sini, selalu doain yang terbaik buat kamu💖  \n\n" +";"
+
+    let index = 0;
+    function typeWriter() {
+      if (index < noteString.length) {
+        noteText.textContent += noteString.charAt(index);
+        index++;
+        setTimeout(typeWriter, 80);
+      }
+    }
+    typeWriter();
+  </script>
+</body>
+</html>
