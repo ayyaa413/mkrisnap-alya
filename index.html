@@ -242,8 +242,27 @@
 </head>
 <body>
 
-  <!-- Musik background -->
-  <audio id="bgMusic" src="https://www.bensound.com/bensound-music/bensound-sunny.mp3" autoplay loop></audio>
+<audio id="bgMusic" src="music/sempurna.mp3" autoplay loop></audio>
+<script>
+  const music = document.getElementById('bgMusic');
+  function playMusic() {
+    music.volume = 0.5;
+    music.play();
+  }
+
+  // Optional: coba auto-play setelah user scroll / klik pertama kali
+  document.body.addEventListener('click', () => {
+    music.play().catch(() => {});
+  }, { once: true });
+</script>
+
+
+<script>
+  window.onload = () => {
+    const music = document.getElementById('bgMusic');
+    music.volume = 0.5; // 50% volume
+  }
+</script>
 
   <!-- Floating hearts animation -->
   <script>
